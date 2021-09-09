@@ -1,0 +1,30 @@
+ private void btnAB_Click(object sender, EventArgs e)
+        {
+
+            char[] let = "ab".ToCharArray();
+            Random ran = new Random();
+            //MessageBox.Show(let[ran.Next(0, 2)].ToString());
+            string letras = (let[ran.Next(0, 2)].ToString());
+            btnAB.Text = letras;
+            MessageBox.Show(letras);
+        }
+        private void Gerar()
+        {
+            char[] let = "ab".ToCharArray();
+            Random ran = new Random();
+            //MessageBox.Show(let[ran.Next(0, 2)].ToString());
+            string letras = (let[ran.Next(0, 2)].ToString());
+            btnAB.Text = letras.ToString();
+            
+        
+     
+           
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Gerar() ;
+
+            
+
+        }
