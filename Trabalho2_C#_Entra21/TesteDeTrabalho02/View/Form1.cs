@@ -18,7 +18,7 @@ namespace TesteDeTrabalho02
         public Form1()
         {
             InitializeComponent();
-            GerarListaPalavras();
+            GerarBotoes();
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -28,22 +28,79 @@ namespace TesteDeTrabalho02
 
         private void btnAB_Click(object sender, EventArgs e)
         {
-
-            lbAB.Text += btnAd.Text;
-            btnAd.Enabled = false;
-            btnAd.BackColor = Color.Red;
-
         }
         private void lbAB_Click(object sender, EventArgs e)
         {
             lbAB.Text = "";
         }
+        /// <summary>
+        /// Ao clicar encerra o jogos e mostra uma menssagem de agradecimento
+        /// </summary>
+        private void button2_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Valeu a partida! Até a próxima :)");
+            Environment.Exit(1);
+        }
+        /// <summary>
+        /// Ao clicar limpa p data grid,limpa a text box e gera novos botões de letras.
+        /// </summary>
+        private void btnResetar_Click(object sender, EventArgs e)
+        {
+            GerarBotoes();
+            txtLetras.Clear();
+            dtgMostrarPontos.Rows.Clear();
+        }
+        /// <summary>
+        /// ao clicar recebe a palavra inserida na text box e faz a conferencia e mostra no data grid a palavra e os pontos.
+        /// </summary>
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MostraDataGrid();
+        }
 
 
+        private void txtLetras_TextChanged(object sender, EventArgs e)
+        {
+            lbAB.Text = txtLetras.Text.ToUpper();
+        }
 
-        private void GerarBotoes()
+        /// <summary>
+        /// ao dititar a tecla Enter recebe a palavra inserida na text box e faz a conferencia e mostra no data grid a palavra e os pontos.
+        /// </summary>
+        private void txtLetras_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                MostraDataGrid();
+            }
+        }
+        private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+        /// <summary>
+        /// Soma os todos os pontos e mostra o total na label
+        /// </summary>
+        private void SomaPonto(int ponto)
+        {
+            int aux = Convert.ToInt32(label5.Text);
+            aux += ponto;
+            label5.Text = Convert.ToString(aux);
+        }
+        /// <summary>
+        /// Ao clicar exibe uma tela de ajuda interativa sobre o jogo.
+        /// </summary>
+        private void button11_Click(object sender, EventArgs e)
+        {
+            Texto f = new Texto();
+            this.FindForm().Hide();
+            f.Show();
+        }
+        /// <summary>
+        /// Recebe as letras e preenche os os noves botõe. 
+        /// </summary>
+        private void GerarBotoes()
+        {
             List<string> let = Controllers.ListaBotoes();
             btnAd.Text = let[0].ToString();
             btnEf.Text = let[1].ToString();
@@ -55,62 +112,11 @@ namespace TesteDeTrabalho02
             btnNtp.Text = let[7].ToString();
             btnRsz.Text = let[8].ToString();
 
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Valeu a partida! Até a próxima :)");
-            Environment.Exit(1);
-        }
-
-        private void btnExecute_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(lbAB.Text);
-        }
-
-        private void btnMostrarrr_Click(object sender, EventArgs e)
-        {
-
-
-        }
-
-        private void btnResetar_Click(object sender, EventArgs e)
-        {
-
-            GerarListaPalavras();
-            GerarBotoes();
-            txtLetras.Clear();
-            dtgMostrarPontos.Rows.Clear();
-        }
-        private void GerarListaPalavras()
-        {
-
-
             lbAB.Text = " ";
-
-            GerarBotoes();
-
-            btnAd.BackColor = Color.LightBlue;
-            btnRsz.BackColor = Color.LightBlue;
-            btnNtp.BackColor = Color.LightBlue;
-            btnMOQ.BackColor = Color.LightBlue;
-            btnKl.BackColor = Color.LightBlue;
-            btnHJV.BackColor = Color.LightBlue;
-            btnBc.BackColor = Color.LightBlue;
-            btnEf.BackColor = Color.LightBlue;
-            btnGiu.BackColor = Color.LightBlue;
-
-            btnAd.Enabled = true;
-            btnRsz.Enabled = true;
-            btnNtp.Enabled = true;
-            btnMOQ.Enabled = true;
-            btnKl.Enabled = true;
-            btnHJV.Enabled = true;
-            btnBc.Enabled = true;
-            btnEf.Enabled = true;
-            btnGiu.Enabled = true;
         }
+        /// <summary>
+        /// Função ultilizada para formar o degradê da tela inicial.
+        /// </summary>
         private void SetBackColorDegrade(object sender, PaintEventArgs e)
         {
             Graphics graphics = e.Graphics; Rectangle gradient_rect = new Rectangle(0, 0, Width, Height);
@@ -118,120 +124,68 @@ namespace TesteDeTrabalho02
             Brush br = new LinearGradientBrush(gradient_rect, Color.FromArgb(108, 226, 252), Color.FromArgb(255, 177, 235), 45f);
             graphics.FillRectangle(br, gradient_rect);
         }
-
-
-        private void button1_Click(object sender, EventArgs e)
+        /// <summary>
+        /// Confere se recebe a palavra inserida e faz a conferencia e mostra no data grid  a palavra e os pontos.
+        /// </summary>
+        private void MostraDataGrid()
         {
-
+            List<string> palavarasProntas = new List<string>();
             char[] conf = lbAB.Text.ToCharArray();
-            List<string> vetorPalavras = new List<string>();
+            List<string> temp = new List<string>();
             foreach (var item in conf)
             {
-                vetorPalavras.Add(item.ToString());
+                temp.Add(item.ToString());
             }
-
-            string pala = lbAB.Text;
-
-            List<string> palavarasProntas = new List<string>();
-            palavarasProntas.Add(pala);
-            foreach (var item in palavarasProntas)
+            bool cond = false;
+            if (txtLetras.Text != "")
             {
-                dtgMostrarPontos.Rows.Add(item);
-            }
-
-            txtLetras.Clear();
-
-        }
-
-
-        private void txtLetras_TextChanged(object sender, EventArgs e)
-        {
-            lbAB.Text = txtLetras.Text.ToUpper();
-        }
-
-
-        List<string> palavarasProntas = new List<string>(); 
-        private void txtLetras_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                char[] conf = lbAB.Text.ToCharArray();
-                List<string> temp = new List<string>();
-                foreach (var item in conf)
+                cond = Controllers.LetraExiste(lbAB.Text);
+                if (cond)
                 {
-                    temp.Add(item.ToString());
+                    MessageBox.Show("Essa Letra não vale");
+                    temp.Remove(lbAB.Text);
                 }
-                bool cond = false;
-                if (txtLetras.Text != "")
+                else
                 {
-                    cond = Controllers.LetraExiste(lbAB.Text);
+                    cond = Controllers.ConferindoLetras(lbAB.Text);// confere se tem letras repetidas na palavra
                     if (cond)
                     {
-                        MessageBox.Show("Essa Letra não vale");
+                        MessageBox.Show("Palavra com letras repetidas! isso não vale!");
                         temp.Remove(lbAB.Text);
                     }
                     else
                     {
-                        cond = Controllers.ConferindoLetras(lbAB.Text);// confere se tem letras repetidas na palavra
+                        cond = Controllers.BuscandoNaLista(palavarasProntas, lbAB.Text);
                         if (cond)
                         {
-                            MessageBox.Show("Palavra com letras repetidas! isso não vale!");
+                            MessageBox.Show("Essa Palavra já foi encontrada! Tente outra...");
                             temp.Remove(lbAB.Text);
                         }
                         else
                         {
-                            cond = Controllers.BuscandoNaLista(palavarasProntas, lbAB.Text);
+                            cond = Controllers.LetrasPermitidas(lbAB.Text);
                             if (cond)
                             {
-                                MessageBox.Show("Essa Palavra já foi encontrada! Tente outra...");
+                                MessageBox.Show("As letras devem ser vizinhas!!!");
                                 temp.Remove(lbAB.Text);
                             }
                             else
                             {
-                                cond = Controllers.LetrasPermitidas(lbAB.Text);
-                                if (cond)
-                                {
-                                    MessageBox.Show("As letras devem ser vizinhas!!!");
-                                    temp.Remove(lbAB.Text);
-                                }
-                                else
-                                {
-                                    int pontos = Controllers.GerandoPonto(txtLetras.Text);
-                                    SomaPonto(pontos);
-                                    dtgMostrarPontos.Rows.Add(txtLetras.Text, pontos);
-                                    palavarasProntas.Add(txtLetras.Text);
-                                    
+                                int pontos = Controllers.GerandoPonto(txtLetras.Text);
+                                SomaPonto(pontos);
+                                dtgMostrarPontos.Rows.Add(txtLetras.Text, pontos);
+                                palavarasProntas.Add(txtLetras.Text);
 
-                                }
+
                             }
                         }
-
                     }
+
                 }
-                txtLetras.Clear();
             }
+            txtLetras.Clear();
         }
-
-
-        private void  SomaPonto(int ponto)
-        {
-           int aux = Convert.ToInt32(label5.Text);
-            aux += ponto;
-            label5.Text = Convert.ToString(aux);
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-
-            Texto f = new Texto();
-            this.FindForm().Hide();
-            f.Show();
-        }
-
-        
     }
+
 }
+

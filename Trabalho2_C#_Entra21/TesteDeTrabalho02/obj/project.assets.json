@@ -8,25 +8,25 @@
     "net5.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Viv\\.nuget\\packages\\": {},
+    "C:\\Users\\Uuario\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Viv\\source\\repos\\j\\TesteDeTrabalho02\\TesteDeTrabalho02.csproj",
+      "projectUniqueName": "C:\\Users\\Uuario\\Desktop\\viviane\\Trabalho2_C.Sharp\\Trabalho2_C#_Entra21\\TesteDeTrabalho02\\TesteDeTrabalho02.csproj",
       "projectName": "TesteDeTrabalho02",
-      "projectPath": "C:\\Users\\Viv\\source\\repos\\j\\TesteDeTrabalho02\\TesteDeTrabalho02.csproj",
-      "packagesPath": "C:\\Users\\Viv\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Viv\\source\\repos\\j\\TesteDeTrabalho02\\obj\\",
+      "projectPath": "C:\\Users\\Uuario\\Desktop\\viviane\\Trabalho2_C.Sharp\\Trabalho2_C#_Entra21\\TesteDeTrabalho02\\TesteDeTrabalho02.csproj",
+      "packagesPath": "C:\\Users\\Uuario\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Uuario\\Desktop\\viviane\\Trabalho2_C.Sharp\\Trabalho2_C#_Entra21\\TesteDeTrabalho02\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Viv\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Uuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
