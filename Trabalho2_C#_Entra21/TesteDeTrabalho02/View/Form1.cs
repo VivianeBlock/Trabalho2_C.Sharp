@@ -127,9 +127,9 @@ namespace TesteDeTrabalho02
         /// <summary>
         /// Confere se recebe a palavra inserida e faz a conferencia e mostra no data grid  a palavra e os pontos.
         /// </summary>
+            List<string> palavarasProntas = new List<string>();
         private void MostraDataGrid()
         {
-            List<string> palavarasProntas = new List<string>();
             char[] conf = lbAB.Text.ToCharArray();
             List<string> temp = new List<string>();
             foreach (var item in conf)
@@ -171,10 +171,10 @@ namespace TesteDeTrabalho02
                             }
                             else
                             {
-                                int pontos = Controllers.GerandoPonto(txtLetras.Text);
+                                int pontos = Controllers.GerandoPonto(lbAB.Text);
                                 SomaPonto(pontos);
-                                dtgMostrarPontos.Rows.Add(txtLetras.Text, pontos);
-                                palavarasProntas.Add(txtLetras.Text);
+                                dtgMostrarPontos.Rows.Add(lbAB.Text, pontos);
+                                palavarasProntas.Add(lbAB.Text);
 
 
                             }
